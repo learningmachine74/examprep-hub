@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 style="text-align:center;">Mock Tests</h2>
+
+<div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:20px; margin-top:30px;">
+
+    {% for name in exams %}
+    <div style="
+        background:white;
+        padding:25px;
+        border-radius:10px;
+        text-align:center;
+        box-shadow:0 4px 8px rgba(0,0,0,0.1);
+    ">
+        <h3>{{ name }}</h3>
+
+        <button style="
+            margin-top:15px;
+            padding:10px 20px;
+            background:#222;
+            color:white;
+            border:none;
+            border-radius:6px;
+            cursor:pointer;
+        ">
+            Start Test
+        </button>
+
+        <!-- Timing Info -->
+        <p style="
+            margin-top:12px;
+            font-size:14px;
+            color:#555;
+        ">
+            ⏱ Duration: 60 Minutes<br>
+            📝 Questions: 50
+        </p>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock %}
