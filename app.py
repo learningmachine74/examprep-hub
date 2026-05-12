@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 
 app = Flask(__name__)
 
@@ -51,14 +51,17 @@ exams = {
     }
 }
 
+# HOME PAGE
 @app.route("/")
 def home():
     return render_template("index.html")
 
+# EXAMS PAGE
 @app.route("/exams")
 def exams_page():
     return render_template("exam.html", exams=exams)
 
+# EXAM DETAILS
 @app.route("/exam/<exam_id>")
 def exam_detail(exam_id):
     exam = exams.get(exam_id)
@@ -66,14 +69,22 @@ def exam_detail(exam_id):
         return "Exam not found"
     return render_template("exam_detail.html", exam=exam)
 
+# MOCK TESTS
 @app.route("/mock-tests")
 def mock_tests():
     exam_list = ["UPSC", "GATE", "SSC", "BANKING", "NEET", "JEE", "IIT"]
     return render_template("mock.html", exams=exam_list)
 
+# ABOUT PAGE
 @app.route("/about")
 def about():
     return render_template("about.html")
 
+# GOOGLE SEARCH CONSOLE VERIFICATION
+@app.route('/googleb1c35a27718fb712.html')
+def google_verify():
+    return send_from_directory('.', 'googleb1c35a27718fb712.html')
+
+# RUN APP
 if __name__ == "__main__":
     app.run(debug=True)
