@@ -79,12 +79,16 @@ def mock_tests():
 @app.route("/about")
 def about():
     return render_template("about.html")
-
-# GOOGLE SEARCH CONSOLE VERIFICATION
+    # GOOGLE SEARCH CONSOLE VERIFICATION
 @app.route('/googleb1c35a27718fb712.html')
 def google_verify():
     return send_from_directory('.', 'googleb1c35a27718fb712.html')
 
+# SITEMAP
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('.', 'sitemap.xml')
+    
 # RUN APP
 if __name__ == "__main__":
     app.run(debug=True)
